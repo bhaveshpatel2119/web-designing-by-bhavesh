@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Appointment Booking</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding: 50px;
+            align-items: center;
+        }
+
+        /* Left Grid - Doctor Section */
+        .doctor-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .doctor-image-container {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            animation: float 3s ease-in-out infinite;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .doctor-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .doctor-image-container::before {
+            content: '';
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            z-index: -1;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .doctor-info h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 10px;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .doctor-info p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 15px;
+            animation: slideInLeft 0.8s ease-out 0.2s both;
+        }
+
+        .doctor-rating {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 20px;
+            animation: slideInLeft 0.8s ease-out 0.4s both;
+        }
+
+        .doctor-rating span {
+            color: #ffc107;
+            font-size: 18px;
+        }
+
+        /* Right Grid - Form Section */
+        .form-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-section h1 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 10px;
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        .form-section > p {
+            color: #999;
+            margin-bottom: 30px;
+            animation: slideInRight 0.8s ease-out 0.2s both;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            animation: slideInUp 0.8s ease-out both;
+        }
+
+        .form-group:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .form-group:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .form-group:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        .form-group:nth-child(6) {
+            animation-delay: 0.5s;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.2);
+            transform: translateY(-2px);
+        }
+
+        input::placeholder {
+            color: #bbb;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: slideInUp 0.8s ease-out 0.6s both;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-submit:active {
+            transform: translateY(-1px);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.2;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+                padding: 30px 20px;
+                gap: 30px;
+            }
+
+            .form-section h1 {
+                font-size: 24px;
+            }
+
+            .doctor-image-container {
+                width: 250px;
+                height: 250px;
+                margin-bottom: 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content {
+                padding: 20px 15px;
+                gap: 20px;
+            }
+
+            .doctor-image-container {
+                width: 200px;
+                height: 200px;
+            }
+
+            .form-section h1 {
+                font-size: 20px;
+            }
+
+            input,
+            select,
+            textarea {
+                font-size: 16px;
+                padding: 10px 12px;
+            }
+
+            .btn-submit {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <!-- Left Grid - Doctor Section -->
+            <div class="doctor-section">
+                <div class="doctor-image-container">
+                    <img src="https://media3.giphy.com/media/v1.Y2lkPTZjMDliOTUybmhzcWozaGQzY3ZreXpnYm81dWY3dGJvbzMxdGhmNTNjeDYwYWZlNyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/kU4mcmHfmV7YhuIj6J/giphy.gif" alt="Doctor">
+                </div>
+                <div class="doctor-info">
+                    <h2>Dr. Sarah Johnson</h2>
+                    <p>General Practitioner</p>
+                    <p>15+ Years Experience</p>
+                    <div class="doctor-rating">
+                        <span>★★★★★</span>
+                        <span>(234 Reviews)</span>
+                    </div>
+                    <p>Available Mon - Fri, 9 AM - 6 PM</p>
+                </div>
+            </div>
+
+            <!-- Right Grid - Appointment Form Section -->
+            <div class="form-section">
+                <h1>Book Appointment</h1>
+                <p>Fill out the form to schedule your visit</p>
+
+                <form>
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" placeholder="your@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone *</label>
+                            <input type="tel" id="phone" placeholder="+1 (555) 000-0000" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Appointment Date *</label>
+                            <input type="date" id="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Preferred Time *</label>
+                            <select id="time" required>
+                                <option value="">Select Time</option>
+                                <option value="09:00">09:00 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="02:00">02:00 PM</option>
+                                <option value="03:00">03:00 PM</option>
+                                <option value="04:00">04:00 PM</option>
+                                <option value="05:00">05:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reason">Reason for Visit *</label>
+                        <textarea id="reason" rows="4" placeholder="Describe your symptoms or reason for visit" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Book Appointment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
