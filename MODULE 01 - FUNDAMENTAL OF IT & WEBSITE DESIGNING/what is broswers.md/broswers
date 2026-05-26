@@ -1,0 +1,40 @@
+# What is a browser?
+
+A web browser (often just "browser") is a software application used to access and view websites and web applications on the internet. Browsers retrieve web content (HTML, CSS, JavaScript, images, videos) from web servers and render it for users to interact with.
+
+## Main types of browsers and examples
+
+- Desktop browsers: Installed on desktop or laptop computers.
+	- Examples: Google Chrome, Mozilla Firefox, Microsoft Edge, Safari, Opera
+
+![alt text](image.png)https://media.coschedule.com/uploads/2022/07/ivrpowers-web-browser.007.jpeg?w=3840&q=75
+
+
+
+- Mobile browsers: Optimized for smartphones and tablets.
+	- Examples: Chrome for Android, Safari on iOS, Samsung Internet, Firefox for Android
+
+![alt text](image-1.png)https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpMU4o53_6QhiFjoH8y2fMHCozd0hgwfYkJw&s
+
+
+
+- Text-based browsers: Render plain text, useful for low-bandwidth or terminal use.
+	- Examples: Lynx, w3m
+
+- Privacy-focused browsers: Emphasize tracking protection and privacy features.
+	- Examples: Brave, Tor Browser
+
+- Lightweight/Minimal browsers: Designed for lower resource use or simple browsing.
+	- Examples: Midori, Pale Moon, Vivaldi (can be lightweight depending on configuration)
+
+## Browser components (brief)
+
+- User interface: Address bar, back/forward buttons, bookmarks
+- Rendering engine: Parses HTML/CSS and displays pages (e.g., Blink, Gecko, WebKit)
+- JavaScript engine: Executes JavaScript code (e.g., V8, SpiderMonkey)
+- Network stack: Handles HTTP/HTTPS requests
+
+## Conclusion
+
+Browsers let users access web content; choose one based on platform, performance, features, and privacy needs.
+

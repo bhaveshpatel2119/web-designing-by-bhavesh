@@ -1,0 +1,30 @@
+# What is W3C
+
+## Definition
+W3C (World Wide Web Consortium) is an international standards organization that develops web technologies and guidelines.
+
+## Key Points
+- **Founded**: 1994 by Tim Berners-Lee (inventor of the Web)
+- **Headquarters**: MIT (USA), ERCIM (France), Keio University (Japan)
+- **Mission**: To lead the Web to its full potential by developing protocols and guidelines
+
+## Main Responsibilities
+1. **Web Standards**: HTML, CSS, XML, JavaScript (ECMAScript)
+2. **Accessibility**: WCAG (Web Content Accessibility Guidelines)
+3. **Performance**: Optimizing web technologies
+4. **Security**: Ensuring secure web communications
+
+## Important W3C Standards
+- HTML5 - Markup language
+- CSS3 - Styling and layout
+- WCAG 2.1 - Accessibility guidelines
+- WebAssembly - Low-level bytecode format
+- SVG - Scalable Vector Graphics
+
+## Why W3C Matters
+- Ensures web interoperability across browsers
+- Maintains web standards and best practices
+- Promotes accessibility and inclusivity
+- Provides recommendations for web developers
+
+
